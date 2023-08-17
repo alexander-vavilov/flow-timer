@@ -1,11 +1,11 @@
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import Avatar from '../Avatar'
 import { UserContext } from '../../contexts/UserContext'
 import { UserContextType } from '../../types'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 
-const Profile = () => {
+const Profile: FC = () => {
 	const { currentUser } = useContext(UserContext) as UserContextType
 
 	return (

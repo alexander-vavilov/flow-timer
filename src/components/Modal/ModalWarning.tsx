@@ -1,4 +1,5 @@
-import Button from './Button'
+import { FC } from 'react'
+import Button from '../Button'
 import Modal from './Modal'
 
 interface IModalWarning {
@@ -8,12 +9,12 @@ interface IModalWarning {
 	handleDiscard: () => void
 }
 
-const ModalWarning = ({
+const ModalWarning: FC<IModalWarning> = ({
 	name,
 	message,
 	handleCancel,
 	handleDiscard,
-}: IModalWarning) => {
+}) => {
 	return (
 		<Modal
 			name={name}

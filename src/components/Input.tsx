@@ -1,13 +1,13 @@
-import React from 'react'
+import { FC } from 'react'
 
-interface IInput {
+type InputType = {
 	type: string
 	value: string
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	placeholder: string
 }
 
-const Input = ({ type, value, onChange, placeholder }: IInput) => {
+const Input: FC<InputType> = ({ type, value, onChange, placeholder }) => {
 	return (
 		<div className='relative'>
 			<input

@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom'
-import Modal from '../components/Modal'
+import Modal from '../components/Modal/Modal'
 import { useNavigate } from 'react-router-dom'
 
 const Statistics = () => {

@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useInterval } from './useInterval'
+import { useUpdatableState } from './useUpdatableState'
 
 type useTimerType = {
 	expiryTime: number
@@ -9,23 +10,18 @@ type useTimerType = {
 const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 	const [isActive, setIsActive] = useState(false)
 
-	const [remainingTime, setRemainingTime] = useState(expiry)
-	const progress = 100 - (remainingTime / expiry) * 100
+	const [progress, setProgress] = useState(0)
+	const [remainingTime, setRemainingTime] = useUpdatableState(
+		expiry,
+		!isActive && progress <= 0
+	)
 
-	const hours = Math.floor(remainingTime / 3600)
-	const minutes = Math.floor((remainingTime % 3600) / 60)
+	const minutes = Math.floor(remainingTime / 60)
 	const seconds = remainingTime % 60
 
-	const stringHours = hours ? `${String(hours).padStart(2, '0')}:` : ''
 	const stringMinutes = String(minutes).padStart(2, '0')
 	const stringSeconds = String(seconds).padStart(2, '0')
-	const stringTime = `${stringHours}${stringMinutes}:${stringSeconds}`
-
-	useEffect(() => {
-		if (isActive || progress !== 0) return
-
-		setRemainingTime(expiry)
-	}, [expiry, isActive, progress])
+	const stringTime = `${stringMinutes}:${stringSeconds}`
 
 	const handleStartTimer = () => {
 		setIsActive(true)
@@ -49,6 +45,7 @@ const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 			if (remainingTime <= 0) return onExpire && onExpire()
 
 			setRemainingTime((prevRemainingTime: number) => prevRemainingTime - 1)
+			setProgress(100 - (remainingTime / expiry) * 100)
 		},
 		isActive ? 1000 : null
 	)
@@ -56,7 +53,6 @@ const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 	return {
 		isActive,
 		remainingTime,
-		hours,
 		minutes,
 		seconds,
 		stringTime,

@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword } from 'firebase/auth'
-import Form from '../components/Form'
+import Form from '../components/Form/Form'
 import { auth } from '../firebase'
 
 interface ILogin {

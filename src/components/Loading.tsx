@@ -1,4 +1,6 @@
-const Loading = ({ size = 32 }) => {
+import { FC } from 'react'
+
+const Loading: FC<{ size?: number }> = ({ size = 32 }) => {
 	return (
 		<div role='status'>
 			<svg

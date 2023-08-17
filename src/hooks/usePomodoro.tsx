@@ -3,6 +3,7 @@ import useTimer from './useTimer'
 import JSConfetti from 'js-confetti'
 import { UserContext } from '../contexts/UserContext'
 import { ActionType, UserContextType } from '../types'
+import { useUpdatableState } from './useUpdatableState'
 import { useBeforeUnload } from 'react-router-dom'
 
 const getSavedTimerData = () => {
@@ -14,22 +15,19 @@ const getSavedTimerData = () => {
 
 const usePomodoro = () => {
 	const { userPreferences } = useContext(UserContext) as UserContextType
+
 	const savedTimerData = getSavedTimerData()
+	const timerData = {
+		action: savedTimerData?.action || 'focus',
+		expiryTime: savedTimerData?.expiryTime || userPreferences.focusTime,
+		intervals: savedTimerData?.intervals || 0,
+	}
 
-	const [action, setAction] = useState<ActionType>(
-		savedTimerData?.action || 'focus'
-	)
-	const [expiryTime, setExpiryTime] = useState(
-		savedTimerData?.expiryTime || userPreferences.focusTime
-	)
-
-	const [intervals, setIntervals] = useState(savedTimerData?.intervals || 0)
+	const [action, setAction] = useState<ActionType>(timerData.action)
+	const [expiryTime, setExpiryTime] = useUpdatableState(timerData.expiryTime)
+	const [intervals, setIntervals] = useState(timerData.intervals)
 
 	const defaultTitleRef = useRef(document.title)
-
-	useEffect(() => {
-		setExpiryTime(userPreferences.focusTime)
-	}, [userPreferences.focusTime])
 
 	const {
 		isActive,
@@ -111,6 +109,7 @@ const usePomodoro = () => {
 		return () => {
 			document.title = defaultTitle
 		}
+		// eslint-disable-next-line
 	}, [remainingTime])
 
 	useBeforeUnload(() => {

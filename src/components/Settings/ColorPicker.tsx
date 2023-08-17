@@ -1,9 +1,9 @@
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { SettingsContextType } from '../../types'
 import { HexColorPicker, HexColorInput } from 'react-colorful'
 import { SettingsContext } from '../../contexts/SettingsContext'
 
-const ColorPicker = () => {
+const ColorPicker: FC = () => {
 	const { settings, setSettings } = useContext(
 		SettingsContext
 	) as SettingsContextType

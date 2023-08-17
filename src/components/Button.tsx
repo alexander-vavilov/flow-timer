@@ -1,4 +1,4 @@
-import { useContext, ReactNode } from 'react'
+import { FC, useContext, ReactNode } from 'react'
 import type { ComponentProps } from 'react'
 import Loading from './Loading'
 import { UserContext } from '../contexts/UserContext'
@@ -10,7 +10,7 @@ interface IButton extends ComponentProps<'button'> {
 	loading?: boolean
 }
 
-const Button = ({ children, className, loading, ...props }: IButton) => {
+const Button: FC<IButton> = ({ children, className, loading, ...props }) => {
 	const { userPreferences } = useContext(UserContext) as UserContextType
 
 	return (

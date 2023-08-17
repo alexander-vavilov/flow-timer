@@ -1,10 +1,10 @@
-import React from 'react'
+import { FC } from 'react'
 import FocusTimeSelect from './FocusTimeSelect'
 import BreakTimeSelect from './BreakTimeSelect'
 import LongBreakTimeSelect from './LongBreakTimeSelect'
 import TargetIntervalsSelect from './TargetIntervalsSelect'
 
-const SettingsSelects = () => {
+const SettingsSelects: FC = () => {
 	return (
 		<div className='flex flex-col gap-2 pt-[2vh]'>
 			<FocusTimeSelect />

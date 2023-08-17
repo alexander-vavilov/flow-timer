@@ -1,8 +1,8 @@
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import { UserContextType } from '../types'
 
-const Avatar = () => {
+const Avatar: FC = () => {
 	const { currentUser } = useContext(UserContext) as UserContextType
 
 	return (

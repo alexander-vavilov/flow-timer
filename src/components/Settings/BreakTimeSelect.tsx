@@ -1,9 +1,9 @@
-import { useContext } from 'react'
-import Select from './Select'
+import { FC, useContext } from 'react'
+import Select from './Select/Select'
 import { SettingsContextType } from '../../types'
 import { SettingsContext } from '../../contexts/SettingsContext'
 
-const BreakTimeSelect = () => {
+const BreakTimeSelect: FC = () => {
 	const { settings, setSettings } = useContext(
 		SettingsContext
 	) as SettingsContextType

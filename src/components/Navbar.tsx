@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import { HiOutlineChartBar, HiOutlineClock, HiOutlineCog } from 'react-icons/hi'
 
-const Navbar = () => {
+const Navbar: FC = () => {
 	const navbarItems = [
 		{
 			icon: HiOutlineChartBar,
@@ -28,6 +29,7 @@ const Navbar = () => {
 						to={path}
 						aria-label={ariaLabel}
 						className='flex justify-center p-4 w-full text-white/70 hover:text-white transition-colors duration-300'
+						tabIndex={-1}
 					>
 						<Icon size={26} />
 					</Link>

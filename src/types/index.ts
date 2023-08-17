@@ -30,3 +30,16 @@ export type SettingsContextType = {
 }
 
 export type ActionType = 'focus' | 'break' | 'longBreak'
+
+export interface IPhoto {
+	id: string
+	alt_description: string
+	urls: {
+		full: string
+		small_s3: string
+	}
+	user: {
+		name: string
+		links: { html: string }
+	}
+}

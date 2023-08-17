@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { FC, useState, useContext } from 'react'
 import { SettingsContext } from '../../contexts/SettingsContext'
 import { UserContext } from '../../contexts/UserContext'
 import { SettingsContextType, UserContextType } from '../../types'
@@ -6,11 +6,10 @@ import Button from '../Button'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 
-const SettingsFooter = () => {
+const SettingsFooter: FC = () => {
 	const { currentUser, userPreferences, setUserPreferences } = useContext(
 		UserContext
 	) as UserContextType
-
 	const { settings, setSettings } = useContext(
 		SettingsContext
 	) as SettingsContextType

@@ -1,9 +1,9 @@
-import { useContext } from 'react'
+import { FC, useContext } from 'react'
 import ToggleButton from './ToggleButton'
 import { SettingsContext } from '../../contexts/SettingsContext'
 import { SettingsContextType } from '../../types'
 
-const SettingsMinimalisticMode = () => {
+const SettingsMinimalisticMode: FC = () => {
 	const { settings, setSettings } = useContext(
 		SettingsContext
 	) as SettingsContextType

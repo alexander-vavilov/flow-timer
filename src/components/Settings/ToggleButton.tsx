@@ -1,9 +1,11 @@
+import { FC } from 'react'
+
 interface IToggleButton {
-	checked?: boolean
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+	checked: boolean
+	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const ToggleButton = ({ checked, onChange }: IToggleButton) => {
+const ToggleButton: FC<IToggleButton> = ({ checked, onChange }) => {
 	return (
 		<label className='relative block max-w-max cursor-pointer'>
 			<input

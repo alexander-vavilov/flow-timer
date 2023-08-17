@@ -1,21 +1,22 @@
-import React, { useContext, useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
-import { UserContext } from '../contexts/UserContext'
-import { CurrentUserType, UserContextType } from '../types'
-import Input from './Input'
-import ErrorMessage from './ErrorMessage'
+import React, { FC, useContext, useState } from 'react'
+import { Navigate } from 'react-router-dom'
+import { UserContext } from '../../contexts/UserContext'
+import { CurrentUserType, UserContextType } from '../../types'
+import Input from '../Input'
+import ErrorMessage from '../ErrorMessage'
+import FormFooter from './FormFooter'
 
-interface IForm {
-	title: string
-	handleSubmit: (data: ISubmit) => {}
-}
 interface ISubmit {
 	email: string
 	password: string
 	username: string
 }
+interface IForm {
+	title: string
+	handleSubmit: (data: ISubmit) => {}
+}
 
-const Form = ({ title, handleSubmit }: IForm) => {
+const Form: FC<IForm> = ({ title, handleSubmit }) => {
 	const { currentUser, setCurrentUser } = useContext(
 		UserContext
 	) as UserContextType
@@ -68,15 +69,7 @@ const Form = ({ title, handleSubmit }: IForm) => {
 						{title}
 					</button>
 					{isError && <ErrorMessage />}
-					<span>
-						{title === 'register' ? 'Already have an account? ' : 'New here? '}
-						<Link
-							to={`/${title === 'register' ? 'login' : 'register'}`}
-							className='text-indigo-300 hover:underline'
-						>
-							{title === 'register' ? 'Log in' : 'Join now'}
-						</Link>
-					</span>
+					<FormFooter title={title} />
 				</form>
 			</div>
 		</div>

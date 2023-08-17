@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { Home, Login, Register } from './pages'
 import { UserContextProvider, UserContext } from './contexts/UserContext'
@@ -11,7 +12,7 @@ const PrivateRoute = ({ children }: { children: JSX.Element }) => {
 	return children
 }
 
-const App = () => {
+const App: FC = () => {
 	return (
 		<UserContextProvider>
 			<Routes>

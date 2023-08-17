@@ -1,4 +1,4 @@
-import Form from '../components/Form'
+import Form from '../components/Form/Form'
 import { auth, db } from '../firebase'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
