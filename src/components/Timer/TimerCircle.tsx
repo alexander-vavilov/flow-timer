@@ -32,10 +32,10 @@ const TimerCircle = ({ action, progress, stringTime }: TimerCircleProps) => {
 			)}
 			<span
 				className={`${
-					!userPreferences.minimalisticMode
-						? 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'
-						: ''
-				} text-6xl tracking-wide select-none`}
+					userPreferences.minimalisticMode
+						? 'text-7xl'
+						: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-6xl'
+				} tracking-wide select-none`}
 			>
 				{stringTime}
 			</span>

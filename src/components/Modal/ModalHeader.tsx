@@ -1,17 +1,17 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { IoClose } from 'react-icons/io5'
 
 interface IModalHeader {
 	name: string
-	onClose: () => void
+	handleClose: () => void
 }
 
-const ModalHeader: FC<IModalHeader> = ({ name, onClose }) => {
+const ModalHeader: FC<IModalHeader> = ({ name, handleClose }) => {
 	return (
 		<header className='flex justify-between items-center gap-4 pb-4'>
 			<h2 className='text-2xl font-medium capitalize'>{name}</h2>
 			<button
-				onClick={onClose}
+				onClick={handleClose}
 				className='flex short:flex-col items-center text-white/60 hover:text-white transition-colors duration-300'
 			>
 				<IoClose size={28} />

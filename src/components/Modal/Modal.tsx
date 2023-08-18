@@ -52,7 +52,7 @@ const Modal: FC<IModal> = ({
 				ref={ref}
 				className={`absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-full h-full md:h-auto max-w-full md:max-w-[90%] xl:max-w-7xl max-h-full md:max-h-[90%] p-4 m-auto bg-zinc-900 md:shadow-lg md:rounded-lg overflow-y-auto ${className}`}
 			>
-				<ModalHeader name={name} onClose={onClose} />
+				<ModalHeader name={name} handleClose={handleClose} />
 				{children}
 				{isWarningOpen && (
 					<ModalWarning

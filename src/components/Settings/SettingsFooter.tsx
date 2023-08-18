@@ -29,14 +29,16 @@ const SettingsFooter: FC = () => {
 	const discardChanges = () => setSettings(userPreferences)
 
 	return (
-		<footer className='flex justify-end w-full pt-4 bg-zinc-900 z-20'>
-			<div className='flex items-center gap-2'>
-				<Button onClick={discardChanges} className='!bg-zinc-600'>
-					Cancel
-				</Button>
-				<Button onClick={saveChanges} loading={isSavingInProcess}>
-					Save changes
-				</Button>
+		<footer className='-m-4 p-4 bg-zinc-900 border-t border-zinc-600 z-20'>
+			<div className='flex justify-end w-full'>
+				<div className='flex items-center gap-2'>
+					<Button onClick={discardChanges} className='!bg-zinc-600'>
+						Cancel
+					</Button>
+					<Button onClick={saveChanges} loading={isSavingInProcess}>
+						Save changes
+					</Button>
+				</div>
 			</div>
 		</footer>
 	)

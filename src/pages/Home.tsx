@@ -16,7 +16,7 @@ const Home = () => {
 		>
 			<div className='flex flex-col justify-center items-center w-full h-full bg-black/50'>
 				<Timer />
-				<nav className='hidden short:block w-full md:py-6 z-10 md:z-0'>
+				<nav className='fixed md:static bottom-0 hidden short:block w-full md:py-6'>
 					<Navbar />
 				</nav>
 			</div>

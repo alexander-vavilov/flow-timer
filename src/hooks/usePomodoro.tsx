@@ -7,7 +7,7 @@ import { useUpdatableState } from './useUpdatableState'
 import { useBeforeUnload } from 'react-router-dom'
 
 const getSavedTimerData = () => {
-	const jsonSavedTimerData = localStorage.getItem('timer-data')
+	const jsonSavedTimerData = window.localStorage.getItem('timer-data')
 
 	if (!jsonSavedTimerData) return
 	return JSON.parse(jsonSavedTimerData)
@@ -118,7 +118,7 @@ const usePomodoro = () => {
 			action: action,
 			intervals: intervals,
 		}
-		localStorage.setItem('timer-data', JSON.stringify(timerData))
+		window.localStorage.setItem('timer-data', JSON.stringify(timerData))
 	})
 
 	return {

@@ -28,21 +28,23 @@ const Timer = () => {
 	})
 
 	return (
-		<div className='relative flex flex-col flex-auto md:flex-none justify-center items-center gap-5'>
-			<Routes>
-				<Route path='statistics' element={<Statistics />} />
-				<Route
-					path='settings'
-					element={
-						<SettingsContextProvider>
-							<Settings />
-						</SettingsContextProvider>
-					}
-				/>
-			</Routes>
+		<div className='relative flex flex-col justify-center items-center gap-5'>
+			<div className='-mb-10'>
+				<Routes>
+					<Route path='statistics' element={<Statistics />} />
+					<Route
+						path='settings'
+						element={
+							<SettingsContextProvider>
+								<Settings />
+							</SettingsContextProvider>
+						}
+					/>
+				</Routes>
+			</div>
 
 			<div className='relative'>
-				<span className='text-xl capitalize'>{action}</span>
+				<span className='text-2xl capitalize'>{action}</span>
 				<div className='fixed short:absolute top-4 short:top-1/2 short:-translate-y-1/2 right-4 short:-right-16 flex items-center'>
 					{action === 'break' && (
 						<IconButton
