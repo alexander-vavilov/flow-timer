@@ -28,7 +28,7 @@ const Navbar: FC = () => {
 					<Link
 						to={path}
 						aria-label={ariaLabel}
-						className='flex justify-center p-4 w-full text-white/70 hover:text-white transition-colors duration-300'
+						className='flex justify-center p-4 w-full icon-button'
 						tabIndex={-1}
 					>
 						<Icon size={26} />

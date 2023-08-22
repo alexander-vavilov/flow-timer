@@ -19,7 +19,7 @@ const IconButton: FC<IconButtonType> = ({
 		<button
 			{...props}
 			aria-label={ariaLabel}
-			className={`text-white/60 px-2 py-1 hover:text-white ${className} transition-colors duration-300`}
+			className={`px-2 py-1 icon-button ${className}`}
 			tabIndex={-1}
 		>
 			<Icon size={size || 20} />

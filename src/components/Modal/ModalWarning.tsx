@@ -19,7 +19,7 @@ const ModalWarning: FC<IModalWarning> = ({
 		<Modal
 			name={name}
 			onClose={handleCancel}
-			className='!max-w-sm !bg-zinc-800'
+			className='!max-w-sm !h-max !bg-zinc-800 rounded-lg'
 		>
 			<span>{message}</span>
 			<div className='flex justify-end items-center gap-2 pt-4'>

@@ -24,7 +24,11 @@ const Register = () => {
 		return user
 	}
 
-	return <Form title='register' handleSubmit={handleRegister} />
+	return (
+		<div className='flex justify-center items-center w-full h-dynamic-screen'>
+			<Form title='register' handleSubmit={handleRegister} />
+		</div>
+	)
 }
 
 export default Register

@@ -12,7 +12,11 @@ const Login = () => {
 		return user
 	}
 
-	return <Form title='login' handleSubmit={handleLogin} />
+	return (
+		<div className='flex justify-center items-center w-full h-dynamic-screen'>
+			<Form title='login' handleSubmit={handleLogin} />
+		</div>
+	)
 }
 
 export default Login

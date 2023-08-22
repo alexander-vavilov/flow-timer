@@ -1,22 +1,21 @@
-import { FC } from 'react'
+import { ComponentProps, FC } from 'react'
 
 type InputType = {
-	type: string
 	value: string
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	placeholder: string
-}
+} & ComponentProps<'input'>
 
-const Input: FC<InputType> = ({ type, value, onChange, placeholder }) => {
+const Input: FC<InputType> = ({ value, onChange, placeholder, ...props }) => {
 	return (
 		<div className='relative'>
 			<input
-				type={type}
 				value={value}
 				onChange={onChange}
 				className={`px-2 py-1 w-full bg-transparent border-2 border-white/30 ${
 					value ? 'border-white/60' : ''
 				} focus:border-white/80 rounded-md peer transition-colors duration-300`}
+				{...props}
 			/>
 			<label
 				className={`absolute left-2 -translate-y-1/2 ${

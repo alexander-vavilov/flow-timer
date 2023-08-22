@@ -41,37 +41,35 @@ const Form: FC<IForm> = ({ title, handleSubmit }) => {
 	if (currentUser) return <Navigate to='/' />
 
 	return (
-		<div className='flex justify-center items-center w-full h-dynamic-screen'>
-			<div className='max-w-sm w-full p-4 bg-zinc-800 rounded-md'>
-				<h2 className='text-2xl font-medium pb-4 capitalize'>{title}</h2>
-				<form onSubmit={onSubmit} className='flex flex-col gap-4'>
-					{title === 'register' && (
-						<Input
-							type='text'
-							value={username}
-							onChange={e => setUsername(e.target.value)}
-							placeholder='Username'
-						/>
-					)}
+		<div className='flex flex-col justify-center sm:max-w-sm w-full h-full sm:h-auto p-4 bg-zinc-800 rounded-md'>
+			<h2 className='text-2xl font-medium pb-4 capitalize'>{title}</h2>
+			<form onSubmit={onSubmit} className='flex flex-col gap-4'>
+				{title === 'register' && (
 					<Input
-						type='email'
-						value={email}
-						onChange={e => setEmail(e.target.value)}
-						placeholder='Email'
+						type='text'
+						value={username}
+						onChange={e => setUsername(e.target.value)}
+						placeholder='Username'
 					/>
-					<Input
-						type='password'
-						value={password}
-						onChange={e => setPassword(e.target.value)}
-						placeholder='Password'
-					/>
-					<button className='w-full p-1 bg-indigo-500 rounded-md capitalize active:bg-indigo-400 transition-colors duration-300'>
-						{title}
-					</button>
-					{isError && <ErrorMessage />}
-					<FormFooter title={title} />
-				</form>
-			</div>
+				)}
+				<Input
+					type='email'
+					value={email}
+					onChange={e => setEmail(e.target.value)}
+					placeholder='Email'
+				/>
+				<Input
+					type='password'
+					value={password}
+					onChange={e => setPassword(e.target.value)}
+					placeholder='Password'
+				/>
+				<button className='w-full p-1 bg-indigo-500 rounded-md capitalize active:bg-indigo-400 transition-colors duration-300'>
+					{title}
+				</button>
+				{isError && <ErrorMessage />}
+				<FormFooter title={title} />
+			</form>
 		</div>
 	)
 }

@@ -32,3 +32,16 @@ select {
 		@apply hidden;
 	}
 }
+
+@media (pointer: coarse) {
+	.icon-button {
+		@apply text-white/60 active:text-white transition-colors duration-300 select-none;
+		-webkit-tap-highlight-color: transparent;
+	}
+}
+@media (pointer: fine) {
+	.icon-button {
+		@apply text-white/60 hover:text-white transition-colors duration-300 select-none;
+		-webkit-tap-highlight-color: transparent;
+	}
+}

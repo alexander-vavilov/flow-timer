@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { FC, useContext, useState } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import { SettingsContextType, UserContextType } from '../types'
 import PhotoGallery from '../components/Settings/PhotoGallery/PhotoGallery'
@@ -14,7 +14,7 @@ import SettingsFooter from '../components/Settings/SettingsFooter'
 import SettingsMinimalisticMode from '../components/Settings/SettingsMinimalisticMode'
 import SettingsSelects from '../components/Settings/SettingsSelects'
 
-const Settings = () => {
+const Settings: FC = () => {
 	const { userPreferences } = useContext(UserContext) as UserContextType
 	const { settings } = useContext(SettingsContext) as SettingsContextType
 
@@ -30,7 +30,7 @@ const Settings = () => {
 			onCloseWarning={unsavedChanges}
 			className='flex flex-col -m-4 overflow-y-hidden'
 		>
-			<div className='border-zinc-500/40 h-full -mx-4 overflow-auto'>
+			<div className='border-zinc-500/40 h-full -mx-4 overflow-x-hidden overflow-y-auto'>
 				<div className='p-4'>
 					<Profile />
 					<SettingsSelects />

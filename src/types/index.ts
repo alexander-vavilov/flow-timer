@@ -43,3 +43,8 @@ export interface IPhoto {
 		links: { html: string }
 	}
 }
+
+export interface ISelectOption {
+	value: number
+	label: string
+}

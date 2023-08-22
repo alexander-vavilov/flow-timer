@@ -4,7 +4,7 @@ import JSConfetti from 'js-confetti'
 import { UserContext } from '../contexts/UserContext'
 import { ActionType, UserContextType } from '../types'
 import { useUpdatableState } from './useUpdatableState'
-import { useBeforeUnload } from 'react-router-dom'
+import useBeforeUnload from './useBeforeUnload'
 
 const getSavedTimerData = () => {
 	const jsonSavedTimerData = window.localStorage.getItem('timer-data')

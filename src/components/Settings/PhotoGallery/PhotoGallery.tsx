@@ -14,6 +14,9 @@ const PhotoGallery: FC = () => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isError, setIsError] = useState(false)
 
+	const accessKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY
+	const baseURL = 'https://api.unsplash.com'
+
 	const fetchData = async (url: string, params: {}) => {
 		try {
 			const { data } = await axios.get(url, { params })
@@ -28,9 +31,9 @@ const PhotoGallery: FC = () => {
 
 	useEffect(() => {
 		const fetchRandomPhotos = async () => {
-			const url = 'https://api.unsplash.com/photos/random'
+			const url = `${baseURL}/photos/random`
 			const params = {
-				client_id: process.env.REACT_APP_UNSPLASH_ACCESS_KEY,
+				client_id: accessKey,
 				count: 10,
 			}
 
@@ -42,9 +45,9 @@ const PhotoGallery: FC = () => {
 	}, [])
 
 	const handleSearch = async () => {
-		const url = 'https://api.unsplash.com/search/photos'
+		const url = `${baseURL}/search/photos`
 		const params = {
-			client_id: process.env.REACT_APP_UNSPLASH_ACCESS_KEY,
+			client_id: accessKey,
 			query: search,
 			per_page: 30,
 		}
