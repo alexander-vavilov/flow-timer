@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import { SettingsContext } from '../../../contexts/SettingsContext'
 import { ISelectOption, SettingsContextType } from '../../../types'
-import Select from './Select'
+import Select from './Select/Select'
 import { findOptionByValue } from '../../../utils'
 
 const LongBreakSelect: FC = () => {
@@ -10,10 +10,10 @@ const LongBreakSelect: FC = () => {
 	) as SettingsContextType
 
 	const options: ISelectOption[] = [
+		{ value: 600, label: '10 min' },
 		{ value: 1200, label: '20 min' },
 		{ value: 1800, label: '30 min' },
 		{ value: 2400, label: '40 min' },
-		{ value: 3000, label: '50 min' },
 		{ value: settings.longBreakTime, label: 'custom' },
 	]
 

@@ -10,7 +10,7 @@ const SettingsMinimalisticMode: FC = () => {
 
 	return (
 		<div className='flex justify-between items-center gap-4 py-4'>
-			<span className='md:text-lg'>Minimalistic mode</span>
+			<span className='text-lg'>Minimalistic mode</span>
 			<ToggleButton
 				checked={settings.minimalisticMode}
 				onChange={e =>

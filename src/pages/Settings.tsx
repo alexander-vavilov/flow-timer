@@ -36,7 +36,7 @@ const Settings: FC = () => {
 					<SettingsSelects />
 					<SettingsMinimalisticMode />
 					<div>
-						<span className='md:text-lg'>Accent color</span>
+						<span className='text-lg'>Accent color</span>
 						<ColorPicker />
 					</div>
 					{!photoGalleryIsOpen && (

@@ -13,26 +13,30 @@ const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 	const [progress, setProgress] = useState(0)
 	const [remainingTime, setRemainingTime] = useUpdatableState(
 		expiry,
-		!isActive && progress <= 0
+		progress <= 0
 	)
+
+	const [startedTime, setStartedTime] = useState(Date.now())
 
 	const minutes = Math.floor(remainingTime / 60)
 	const seconds = remainingTime % 60
-
 	const stringMinutes = String(minutes).padStart(2, '0')
 	const stringSeconds = String(seconds).padStart(2, '0')
 	const stringTime = `${stringMinutes}:${stringSeconds}`
 
 	const handleStartTimer = () => {
 		setIsActive(true)
+		setStartedTime(Date.now())
 	}
 
 	const handlePauseTimer = () => {
 		setIsActive(false)
+		setStartedTime(Date.now())
 	}
 
 	const handleToggleTimer = () => {
 		setIsActive(prevActiveValue => !prevActiveValue)
+		setStartedTime(Date.now())
 	}
 
 	const handleResetTimer = (newExpiryTime = expiry) => {
@@ -44,7 +48,8 @@ const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 		() => {
 			if (remainingTime <= 0) return onExpire && onExpire()
 
-			setRemainingTime((prevRemainingTime: number) => prevRemainingTime - 1)
+			const tempTimer = Math.floor((Date.now() - startedTime) / 1000)
+			setRemainingTime(expiry - tempTimer)
 			setProgress(100 - (remainingTime / expiry) * 100)
 		},
 		isActive ? 1000 : null

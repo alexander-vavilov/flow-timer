@@ -8,9 +8,10 @@ import useBeforeUnload from './useBeforeUnload'
 
 const getSavedTimerData = () => {
 	const jsonSavedTimerData = window.localStorage.getItem('timer-data')
-
 	if (!jsonSavedTimerData) return
-	return JSON.parse(jsonSavedTimerData)
+	const savedTimerData = JSON.parse(jsonSavedTimerData)
+
+	return savedTimerData
 }
 
 const usePomodoro = () => {
@@ -19,12 +20,13 @@ const usePomodoro = () => {
 	const savedTimerData = getSavedTimerData()
 	const timerData = {
 		action: savedTimerData?.action || 'focus',
-		expiryTime: savedTimerData?.expiryTime || userPreferences.focusTime,
+		expiryTime: userPreferences.focusTime,
 		intervals: savedTimerData?.intervals || 0,
 	}
 
 	const [action, setAction] = useState<ActionType>(timerData.action)
 	const [expiryTime, setExpiryTime] = useUpdatableState(timerData.expiryTime)
+
 	const [intervals, setIntervals] = useState(timerData.intervals)
 
 	const defaultTitleRef = useRef(document.title)
@@ -114,7 +116,6 @@ const usePomodoro = () => {
 
 	useBeforeUnload(() => {
 		const timerData = {
-			expiryTime: remainingTime,
 			action: action,
 			intervals: intervals,
 		}

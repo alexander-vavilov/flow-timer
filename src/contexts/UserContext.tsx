@@ -1,9 +1,5 @@
 import { useState, useEffect, createContext, ReactNode } from 'react'
-import {
-	CurrentUserStateType,
-	CurrentUserType,
-	UserContextType,
-} from '../types'
+import { CurrentUserStateType, UserContextType } from '../types'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth, db } from '../firebase'
 import Loading from '../components/Loading'
@@ -16,9 +12,9 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
 	const [isLoading, setIsLoading] = useState(true)
 
 	const defaultUserPreferences = {
-		focusTime: 900,
+		focusTime: 1200,
 		breakTime: 600,
-		longBreakTime: 900,
+		longBreakTime: 1200,
 		target: 4,
 		minimalisticMode: false,
 		accentColor: '#0d9488',

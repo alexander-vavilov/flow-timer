@@ -1,7 +1,7 @@
 import { FC, useContext } from 'react'
 import { SettingsContext } from '../../../contexts/SettingsContext'
 import { ISelectOption, SettingsContextType } from '../../../types'
-import Select from './Select'
+import Select from './Select/Select'
 import { findOptionByValue } from '../../../utils'
 
 const TargetSelect: FC = () => {
@@ -10,13 +10,13 @@ const TargetSelect: FC = () => {
 	) as SettingsContextType
 
 	const options: ISelectOption[] = [
-		{ value: 2, label: '2' },
-		{ value: 3, label: '3' },
-		{ value: 4, label: '4' },
-		{ value: 5, label: '5' },
-		{ value: 6, label: '6' },
-		{ value: 7, label: '7' },
-		{ value: 8, label: '8' },
+		{ value: 2, label: '2 intervals' },
+		{ value: 3, label: '3 intervals' },
+		{ value: 4, label: '4 intervals' },
+		{ value: 5, label: '5 intervals' },
+		{ value: 6, label: '6 intervals' },
+		{ value: 7, label: '7 intervals' },
+		{ value: 8, label: '8 intervals' },
 		{ value: settings.target, label: 'custom' },
 	]
 

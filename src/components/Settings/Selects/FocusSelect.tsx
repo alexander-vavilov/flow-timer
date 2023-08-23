@@ -1,5 +1,5 @@
 import { FC, useContext } from 'react'
-import Select from './Select'
+import Select from './Select/Select'
 import { SettingsContext } from '../../../contexts/SettingsContext'
 import { ISelectOption, SettingsContextType } from '../../../types'
 import { findOptionByValue } from '../../../utils'

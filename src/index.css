@@ -38,10 +38,18 @@ select {
 		@apply text-white/60 active:text-white transition-colors duration-300 select-none;
 		-webkit-tap-highlight-color: transparent;
 	}
+	.select-option {
+		@apply whitespace-nowrap rounded-lg cursor-pointer active:bg-zinc-700/70 transition-colors duration-300;
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 @media (pointer: fine) {
 	.icon-button {
 		@apply text-white/60 hover:text-white transition-colors duration-300 select-none;
+		-webkit-tap-highlight-color: transparent;
+	}
+	.select-option {
+		@apply whitespace-nowrap rounded-lg cursor-pointer hover:bg-zinc-700/70 transition-colors duration-300;
 		-webkit-tap-highlight-color: transparent;
 	}
 }
