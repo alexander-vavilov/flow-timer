@@ -49,8 +49,10 @@ const useTimer = ({ expiryTime: expiry, onExpire }: useTimerType) => {
 			if (remainingTime <= 0) return onExpire && onExpire()
 
 			const tempTimer = Math.floor((Date.now() - startedTime) / 1000)
-			setRemainingTime(expiry - tempTimer)
-			setProgress(100 - (remainingTime / expiry) * 100)
+			const newRemainingTime = expiry - tempTimer
+			setRemainingTime(newRemainingTime)
+
+			setProgress(100 - (newRemainingTime / expiry) * 100)
 		},
 		isActive ? 1000 : null
 	)

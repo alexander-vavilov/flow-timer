@@ -86,6 +86,12 @@ const usePomodoro = () => {
 					setAction('break')
 					newExpiryTime = userPreferences.breakTime
 				}
+
+				// Notification.requestPermission().then(permission => {
+				// 	if (permission === 'granted')
+				// 		new Notification('Its time for break', { body: 'Hello world' })
+				// })
+
 				break
 			case 'break':
 			case 'longBreak':
