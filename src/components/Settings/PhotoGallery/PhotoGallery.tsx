@@ -23,7 +23,6 @@ const PhotoGallery: FC = () => {
 			return data
 		} catch (error) {
 			setIsError(true)
-			console.error(error)
 		} finally {
 			setIsLoading(false)
 		}

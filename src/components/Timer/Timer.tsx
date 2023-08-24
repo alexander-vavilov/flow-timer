@@ -8,7 +8,6 @@ import { Settings, Statistics } from '../../pages'
 import IconButton from '../IconButton'
 import usePomodoro from '../../hooks/usePomodoro'
 import useKeyDown from '../../hooks/useKeyDown'
-import { SettingsContextProvider } from '../../contexts/SettingsContext'
 
 const Timer = () => {
 	const {
@@ -28,20 +27,11 @@ const Timer = () => {
 	})
 
 	return (
-		<div className='relative flex flex-col justify-center items-center gap-5'>
-			<div className='-mb-10'>
-				<Routes>
-					<Route path='statistics' element={<Statistics />} />
-					<Route
-						path='settings'
-						element={
-							<SettingsContextProvider>
-								<Settings />
-							</SettingsContextProvider>
-						}
-					/>
-				</Routes>
-			</div>
+		<div className='flex flex-col justify-center items-center gap-4'>
+			<Routes>
+				<Route path='statistics' element={<Statistics />} />
+				<Route path='settings' element={<Settings />} />
+			</Routes>
 
 			<div className='relative'>
 				<span className='text-2xl capitalize'>{action}</span>

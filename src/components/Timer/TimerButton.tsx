@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { PiPlay, PiPause } from 'react-icons/pi'
-import { UserContext } from '../../contexts/UserContext'
-import { UserContextType } from '../../types'
+import { SettingsContextType } from '../../types'
 import IconButton from '../IconButton'
+import { SettingsContext } from '../../contexts/SettingsContext'
 
 type TimerButtonProps = {
 	isActive: boolean
@@ -10,7 +10,7 @@ type TimerButtonProps = {
 }
 
 const TimerButton = ({ isActive, toggle }: TimerButtonProps) => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
+	const { settings } = useContext(SettingsContext) as SettingsContextType
 	const icon = isActive ? PiPause : PiPlay
 
 	return (
@@ -19,7 +19,7 @@ const TimerButton = ({ isActive, toggle }: TimerButtonProps) => {
 			size={42}
 			ariaLabel={isActive ? 'pause' : 'start'}
 			onClick={toggle}
-			style={{ color: userPreferences.accentColor }}
+			style={{ color: settings.accentColor }}
 		/>
 	)
 }

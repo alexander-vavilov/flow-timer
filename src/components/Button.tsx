@@ -1,8 +1,8 @@
 import { FC, useContext, ReactNode } from 'react'
 import type { ComponentProps } from 'react'
 import Loading from './Loading'
-import { UserContext } from '../contexts/UserContext'
-import { UserContextType } from '../types'
+import { SettingsContextType } from '../types'
+import { SettingsContext } from '../contexts/SettingsContext'
 
 interface IButton extends ComponentProps<'button'> {
 	children: ReactNode
@@ -11,13 +11,13 @@ interface IButton extends ComponentProps<'button'> {
 }
 
 const Button: FC<IButton> = ({ children, className, loading, ...props }) => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
+	const { settings } = useContext(SettingsContext) as SettingsContextType
 
 	return (
 		<button
 			{...props}
 			className={`relative py-1 px-2 rounded-md ${className} overflow-hidden`}
-			style={{ background: userPreferences.accentColor }}
+			style={{ background: settings.accentColor }}
 		>
 			{children}
 			{loading && (

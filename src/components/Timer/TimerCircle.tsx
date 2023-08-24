@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { UserContext } from '../../contexts/UserContext'
-import { ActionType, UserContextType } from '../../types'
+import { ActionType, SettingsContextType } from '../../types'
+import { SettingsContext } from '../../contexts/SettingsContext'
 
 type TimerCircleProps = {
 	action: ActionType
@@ -9,12 +9,12 @@ type TimerCircleProps = {
 }
 
 const TimerCircle = ({ action, progress, stringTime }: TimerCircleProps) => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
-	const color = action === 'focus' ? userPreferences.accentColor : '#16a34a'
+	const { settings } = useContext(SettingsContext) as SettingsContextType
+	const color = action === 'focus' ? settings.accentColor : '#16a34a'
 
 	return (
 		<div className='relative'>
-			{!userPreferences.minimalisticMode && (
+			{!settings.minimalisticMode && (
 				<div
 					className='flex justify-center items-center w-60 h-60 bg-gray-800/50 backdrop-blur-sm border-8 rounded-full'
 					style={{ borderColor: color }}
@@ -32,10 +32,10 @@ const TimerCircle = ({ action, progress, stringTime }: TimerCircleProps) => {
 			)}
 			<span
 				className={`${
-					userPreferences.minimalisticMode
-						? 'text-7xl'
-						: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-6xl'
-				} tracking-wide select-none`}
+					settings.minimalisticMode
+						? 'text-[82px]'
+						: 'absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-[68px]'
+				} leading-none tracking-wide select-none`}
 			>
 				{stringTime}
 			</span>

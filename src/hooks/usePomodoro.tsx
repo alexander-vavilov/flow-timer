@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useContext } from 'react'
 import useTimer from './useTimer'
 import JSConfetti from 'js-confetti'
-import { UserContext } from '../contexts/UserContext'
-import { ActionType, UserContextType } from '../types'
+import { ActionType, SettingsContextType } from '../types'
 import { useUpdatableState } from './useUpdatableState'
 import useBeforeUnload from './useBeforeUnload'
+import { SettingsContext } from '../contexts/SettingsContext'
 
 const getSavedTimerData = () => {
 	const jsonSavedTimerData = window.localStorage.getItem('timer-data')
@@ -15,12 +15,12 @@ const getSavedTimerData = () => {
 }
 
 const usePomodoro = () => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
+	const { settings } = useContext(SettingsContext) as SettingsContextType
 
 	const savedTimerData = getSavedTimerData()
 	const timerData = {
 		action: savedTimerData?.action || 'focus',
-		expiryTime: userPreferences.focusTime,
+		expiryTime: settings.focusTime,
 		intervals: savedTimerData?.intervals || 0,
 	}
 
@@ -58,8 +58,8 @@ const usePomodoro = () => {
 
 	const switchToFocus = () => {
 		setAction('focus')
-		setExpiryTime(userPreferences.focusTime)
-		reset(userPreferences.focusTime)
+		setExpiryTime(settings.focusTime)
+		reset(settings.focusTime)
 	}
 
 	const handleSkipBreak = () => {
@@ -79,12 +79,12 @@ const usePomodoro = () => {
 		switch (action) {
 			case 'focus':
 				setIntervals(newIntervals)
-				if (newIntervals === userPreferences.target / 2) {
+				if (newIntervals === settings.target / 2) {
 					setAction('longBreak')
-					newExpiryTime = userPreferences.longBreakTime
+					newExpiryTime = settings.longBreakTime
 				} else {
 					setAction('break')
-					newExpiryTime = userPreferences.breakTime
+					newExpiryTime = settings.breakTime
 				}
 
 				// Notification.requestPermission().then(permission => {
@@ -96,13 +96,13 @@ const usePomodoro = () => {
 			case 'break':
 			case 'longBreak':
 				setAction('focus')
-				newExpiryTime = userPreferences.focusTime
+				newExpiryTime = settings.focusTime
 				break
 		}
 		setExpiryTime(newExpiryTime)
 		reset(newExpiryTime)
 
-		if (newIntervals === userPreferences.target) {
+		if (newIntervals === settings.target) {
 			congratulate()
 			fullReset()
 		}

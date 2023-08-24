@@ -1,34 +1,16 @@
 import { FC } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { Home, Login, Register } from './pages'
-import { UserContextProvider, UserContext } from './contexts/UserContext'
-import { useContext } from 'react'
-import { UserContextType } from './types'
-
-const PrivateRoute = ({ children }: { children: JSX.Element }) => {
-	const { currentUser } = useContext(UserContext) as UserContextType
-
-	if (currentUser === null) return <Navigate to='/login' />
-	return children
-}
+import { Home } from './pages'
+import { SettingsContextProvider } from './contexts/SettingsContext'
 
 const App: FC = () => {
 	return (
-		<UserContextProvider>
+		<SettingsContextProvider>
 			<Routes>
 				<Route path='/' element={<Navigate to='/app' />} />
-				<Route
-					path='/app/*'
-					element={
-						<PrivateRoute>
-							<Home />
-						</PrivateRoute>
-					}
-				/>
-				<Route path='/register' element={<Register />} />
-				<Route path='/login' element={<Login />} />
+				<Route path='/app/*' element={<Home />} />
 			</Routes>
-		</UserContextProvider>
+		</SettingsContextProvider>
 	)
 }
 

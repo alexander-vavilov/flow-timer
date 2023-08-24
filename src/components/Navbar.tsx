@@ -22,7 +22,7 @@ const Navbar: FC = () => {
 	]
 
 	return (
-		<ul className='flex justify-around md:justify-center'>
+		<ul className='flex justify-around md:justify-center pb-4 md:pb-0'>
 			{navbarItems.map(({ icon: Icon, path, ariaLabel }) => (
 				<li key={path} className='flex-auto md:flex-none'>
 					<Link

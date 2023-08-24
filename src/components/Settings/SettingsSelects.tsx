@@ -7,14 +7,14 @@ import TargetSelect from './Selects/TargetSelect'
 
 const SettingsSelects: FC = () => {
 	return (
-		<div className='flex flex-col gap-2 pt-[2vh]'>
-			<TimeSetting label='Focus'>
+		<div className='flex flex-col gap-2'>
+			<TimeSetting label='Focus duration'>
 				<FocusSelect />
 			</TimeSetting>
-			<TimeSetting label='Break'>
+			<TimeSetting label='Break duration'>
 				<BreakSelect />
 			</TimeSetting>
-			<TimeSetting label='Long break'>
+			<TimeSetting label='Long break duration'>
 				<LongBreakSelect />
 			</TimeSetting>
 			<TimeSetting label='Target'>

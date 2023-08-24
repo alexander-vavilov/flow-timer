@@ -1,17 +1,17 @@
 import { useContext } from 'react'
 import Navbar from '../components/Navbar'
 import Timer from '../components/Timer/Timer'
-import { UserContext } from '../contexts/UserContext'
-import { UserContextType } from '../types'
+import { SettingsContextType } from '../types'
+import { SettingsContext } from '../contexts/SettingsContext'
 
 const Home = () => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
+	const { settings } = useContext(SettingsContext) as SettingsContextType
 
 	return (
 		<div
 			className='flex flex-col justify-center items-center gap-4 h-full'
 			style={{
-				background: `url(${userPreferences.wallpaper}) center center / cover`,
+				background: `url(${settings.wallpaper}) center center / cover`,
 			}}
 		>
 			<div className='flex flex-col justify-center items-center w-full h-full bg-black/50'>

@@ -1,6 +1,6 @@
-import { createContext, useContext, useState, ReactNode } from 'react'
-import { UserContext } from './UserContext'
-import { SettingsContextType, UserContextType } from '../types'
+import { createContext, ReactNode } from 'react'
+import { SettingsContextType } from '../types'
+import { useLocalStorageState } from '../hooks/useLocalStorageState'
 
 export const SettingsContext = createContext<SettingsContextType | null>(null)
 
@@ -9,8 +9,19 @@ export const SettingsContextProvider = ({
 }: {
 	children: ReactNode
 }) => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
-	const [settings, setSettings] = useState(userPreferences)
+	const defaultUserPreferences = {
+		focusTime: 1200,
+		breakTime: 600,
+		longBreakTime: 1200,
+		target: 4,
+		minimalisticMode: true,
+		accentColor: '#36b458',
+	}
+
+	const [settings, setSettings] = useLocalStorageState(
+		'settings',
+		defaultUserPreferences
+	)
 
 	return (
 		<SettingsContext.Provider value={{ settings, setSettings }}>

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { UserContext } from '../../contexts/UserContext'
-import { UserContextType } from '../../types'
+import { SettingsContextType } from '../../types'
+import { SettingsContext } from '../../contexts/SettingsContext'
 
 type TimerIntervalsProps = {
 	completedIntervals: number
@@ -11,17 +11,17 @@ const TimerIntervals = ({
 	completedIntervals,
 	currentInterval,
 }: TimerIntervalsProps) => {
-	const { userPreferences } = useContext(UserContext) as UserContextType
+	const { settings } = useContext(SettingsContext) as SettingsContextType
 
 	return (
 		<div className='flex flex-col items-center gap-2'>
-			{!userPreferences.minimalisticMode && (
+			{!settings.minimalisticMode && (
 				<span>
-					{completedIntervals}/{userPreferences.target}
+					{completedIntervals}/{settings.target}
 				</span>
 			)}
 			<div className='flex items-center gap-4'>
-				{Array.from({ length: userPreferences.target }, (_, index) => {
+				{Array.from({ length: settings.target }, (_, index) => {
 					const isActiveInterval = currentInterval === index + 1
 					const isCompletedInterval = completedIntervals > index
 
