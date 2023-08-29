@@ -12,7 +12,7 @@ body,
 	@apply h-full;
 }
 body {
-	@apply text-white bg-zinc-900 font-regular;
+	@apply text-white bg-zinc-900 font-regular overflow-hidden overscroll-none;
 }
 
 input,

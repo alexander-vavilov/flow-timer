@@ -10,8 +10,10 @@ const Statistics = () => {
 
 	return createPortal(
 		<Modal name='Statistics' onClose={() => navigate('/app')}>
-			The developer is too lazy to add statistics for now. He'll definitely do
-			it someday.
+			<div className='p-4'>
+				The developer is too lazy to add statistics for now. He'll definitely do
+				it someday.
+			</div>
 		</Modal>,
 		modalRoot
 	)

@@ -3,6 +3,7 @@ module.exports = {
 	theme: {
 		extend: {
 			screens: {
+				xs: '440px',
 				short: { raw: '(min-height: 578px)' },
 			},
 			fontFamily: {

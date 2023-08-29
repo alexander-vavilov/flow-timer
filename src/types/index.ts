@@ -3,9 +3,9 @@ type UserPreferencesType = {
 	breakTime: number
 	longBreakTime: number
 	target: number
-	wallpaper?: string
 	minimalisticMode: boolean
 	accentColor: string
+	wallpaper: null | string
 }
 
 export type SettingsContextType = {

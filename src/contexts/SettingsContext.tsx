@@ -16,6 +16,7 @@ export const SettingsContextProvider = ({
 		target: 4,
 		minimalisticMode: true,
 		accentColor: '#36b458',
+		wallpaper: null,
 	}
 
 	const [settings, setSettings] = useLocalStorageState(

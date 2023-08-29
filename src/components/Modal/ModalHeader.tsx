@@ -8,7 +8,7 @@ interface IModalHeader {
 
 const ModalHeader: FC<IModalHeader> = ({ name, handleClose }) => {
 	return (
-		<header className='flex justify-between items-center gap-4 pb-4'>
+		<header className='flex justify-between items-center gap-4 p-4'>
 			<h2 className='text-2xl font-medium capitalize'>{name}</h2>
 			<button
 				onClick={handleClose}
